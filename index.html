@@ -27,6 +27,9 @@ body {
 .overlay {
     display: none;
 }
+#tools, #saveNifti, #loadSelection, #saveSelection, #loadMatrix, #saveMatrix, #resetMatrix {
+    display: none;
+}
 </style>
 
 <div id='viewer1'>
@@ -124,7 +127,7 @@ MUI.push($('#loadMatrix'), loadMatrix);
 MUI.push($('#saveMatrix'), saveMatrix);
 MUI.push($('#loadSelection'), loadSelection);
 MUI.push($('#saveSelection'), saveSelection);
-MUI.push($('#reset'), resetMatrix);
+MUI.push($('#resetMatrix'), resetMatrix);
 
 var mv;
 
@@ -189,6 +192,8 @@ function init(file) {
         */
 
         $('span').show();
+        $('#tools, #saveNifti, #loadSelection, #saveSelection, #loadMatrix, #saveMatrix, #resetMatrix').show();
+
     });
 }
 
@@ -264,7 +269,10 @@ let prevMatrix = null;
 function multiplyAndUpdate(mat) {
     var m2v = mv.mri.MatrixMm2Vox;
     var tmp = mv.mri.inv4x4Mat([...m2v[0], ...m2v[1], ...m2v[2], ...m2v[3]]);
-    var v2m = [tmp.splice(0,4), tmp.splice(0,4), tmp.splice(0,4), tmp]
+    var v2m = [tmp.splice(0,4), tmp.splice(0,4), tmp.splice(0,4), tmp];
+    if(prevMatrix == null ) {
+        prevMatrix = JSON.parse(JSON.stringify(m2v));
+    }
     m2v = mv.mri.multMatMat(prevMatrix, mat);
     mv.mri.MatrixMm2Vox = m2v;
     mv.mri.MatrixVox2Mm = v2m;
@@ -477,7 +485,9 @@ function updateCropBoxFromOverlay(view, box) {
 }
 
 function resetMatrix() {
+    console.log('reset matrix');
     mv.mri.MatrixMm2Vox = JSON.parse(JSON.stringify(origMatrix));
+    multiplyAndUpdate(eye());
     mv.draw();
     printInfo();
 }
