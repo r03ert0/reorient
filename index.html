@@ -604,14 +604,14 @@ function saveNifti() {
             }
         }
     }
-    let mat = [
-        [pixdim[0], 0, 0, -dim[0]/2],
-        [0, pixdim[1], 0, -dim[1]/2],
-        [0, 0, pixdim[2], -dim[2]/2],
+    let v2m = [
+        [pixdim[0], 0, 0, cropBox.min.x],
+        [0, pixdim[1], 0, cropBox.min.y],
+        [0, 0, pixdim[2], cropBox.min.z],
         [0,0,0,1]
     ];
     console.log(`${n} out of ${dim[0]*dim[1]*dim[2]} voxels mapped outside the original volume`);
-    let niigz = mv.mri.createNifti(dim, pixdim, mat, data);
+    let niigz = mv.mri.createNifti(dim, pixdim, v2m, data);
     let name = prompt("Save selection as...", "reoriented.nii.gz");
     if(name !== null) {
         mv.mri.saveNifti(niigz, name);
