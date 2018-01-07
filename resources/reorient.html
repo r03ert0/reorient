@@ -1,0 +1,59 @@
+<html>
+<body>
+<style>
+body {
+    background: #283b4c;
+    color: #d0cdc6;
+}
+p {
+    font-size:96px;
+    display: inline-block;
+    transform: rotate( 0 ) translate( 0, 0);
+}
+#text {
+    margin-left:100px;
+}
+</style>
+<div id='text'>
+</div>
+<script src='http://localhost/libs/jquery/3.1.1/jquery.min.js'></script>
+<script>
+var str='reorient';
+var n = 0;
+str.split('').map((o)=>{
+    let rx = Math.random()*50-25;
+    let ry = Math.random()*50-25;
+    let rr = Math.random()*180;
+    let name = `id${n++}`;
+    let elem = $(`<p id=${name}>${o}</p>`);
+    $('#text').append(elem);
+    (function(n, x, y, r) {
+        let d1 = 2000;//Math.random()*500;
+        let d2 = d1 + 1000;//Math.random()*500;
+        let d3 = d2 + 1000;//Math.random()*500;
+        $(n).css({
+            transform: `rotate( ${r}deg ) translate( ${x}px, ${y}px )`
+        });
+        setTimeout(function(){
+            $(n).css({
+                transform: `rotate( ${r}deg ) translate( 0, ${y}px )`,
+                transition: "all ease-in-out 1s"
+            });
+        }, d1);
+        setTimeout(function(){
+            $(n).css({
+                transform: `rotate( ${r}deg ) translate( 0, 0 )`,
+                transition: "all ease-in-out 1s"
+            });
+        }, d2);
+        setTimeout(function(){
+            $(n).css({
+                transform: "rotate( 0 ) translate( 0, 0 )",
+                transition: "all ease-in-out 1s"
+            });
+        }, d3);
+    }(`#${name}`, rx, ry, rr));
+});
+</script>
+</body>
+</html>
