@@ -555,21 +555,7 @@ function saveNifti() {
     }
 }
 
-</script>
-
-<!--
-<div id='3dcontainer'>
-    <canvas id='3d' width='300px' height='300px'>
-    </canvas>
-</div>
-<span id='x'>x</span>
-<span id='y'>y</span>
-<span id='z'>z</span>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js'></script>
-<script src='https://threejs.org/examples/js/controls/TrackballControls.js'></script>
-<script src='lib/three.min.js'></script>
-<script src='lib/TrackballControls.js'></script>
-<script>
+/*
 //
 //    3D render
 //
@@ -670,3 +656,4 @@ function animate(mat) {
     $('#miny').css({left:o[0],      top:o[1]+d[1]});
     $('#maxy').css({left:o[0],      top:o[1]});
 }
+*/

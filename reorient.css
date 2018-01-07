@@ -1,0 +1,33 @@
+body {
+    background: #222;
+}
+#viewer {
+    display: inline-block;
+    border: thin solid black;
+}
+#3dcontainer {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
+}
+#miny {
+    transform: translate( -100% , -100%);
+}
+#maxy {
+    transform: translate( -100% , 0);
+}
+#maxx {
+    transform: translate( -100% , 0);
+}
+.overlay {
+    display: none;
+}
+#tools, #saveNifti, #loadSelection, #saveSelection, #loadMatrix, #saveMatrix, #resetMatrix {
+    display: none;
+}
+.init {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate( -50%, -50% );
+}

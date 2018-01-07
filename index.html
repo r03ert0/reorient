@@ -2,42 +2,6 @@
 
 <body>
 
-<style>
-body {
-    background: #222;
-}
-#viewer {
-    display: inline-block;
-    border: thin solid black;
-}
-#3dcontainer {
-    position: relative;
-    display: inline-block;
-    padding: 20px;
-}
-#miny {
-    transform: translate( -100% , -100%);
-}
-#maxy {
-    transform: translate( -100% , 0);
-}
-#maxx {
-    transform: translate( -100% , 0);
-}
-.overlay {
-    display: none;
-}
-#tools, #saveNifti, #loadSelection, #saveSelection, #loadMatrix, #saveMatrix, #resetMatrix {
-    display: none;
-}
-.init {
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate( -50%, -50% );
-}
-</style>
-
 <!--
 <img src="resources/picts/Helicopter-upside-down.jpg" style="position:absolute;width:100%;height:100%;-webkit-filter:hue-rotate(90deg)"/>
 -->
@@ -78,6 +42,18 @@ body {
         </div>
     </div>
 </div>
+
+<script src='http://localhost/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='http://localhost/mriviewerjs/mriviewer.js'></script>
+<script src='http://localhost/muijs/mui.js'></script>
+<link rel="stylesheet" type="text/css" href="http://localhost/muijs/mui.css" />
+<link rel="stylesheet" type="text/css" href="reorient.css" />
+<script src='reorient.js'></script>
+
+</body>
+</html>
+
+
 <!--
 <span id='minx'></span>
 <span id='maxx'></span>
@@ -100,12 +76,16 @@ body {
 </div>
 -->
 
-<script src='http://localhost/libs/jquery/3.1.1/jquery.min.js'></script>
-<script src='http://localhost/mriviewerjs/mriviewer.js'></script>
-<script src='http://localhost/muijs/mui.js'></script>
-<link rel="stylesheet" type="text/css" href="http://localhost/muijs/mui.css" />
-
-<script src='reorient.js'></script>
-
-</body>
-</html>
+<!--
+<div id='3dcontainer'>
+    <canvas id='3d' width='300px' height='300px'>
+    </canvas>
+</div>
+<span id='x'>x</span>
+<span id='y'>y</span>
+<span id='z'>z</span>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js'></script>
+<script src='https://threejs.org/examples/js/controls/TrackballControls.js'></script>
+<script src='lib/three.min.js'></script>
+<script src='lib/TrackballControls.js'></script>
+-->
