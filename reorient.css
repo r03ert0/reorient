@@ -25,9 +25,15 @@ body {
 #tools, #saveNifti, #loadSelection, #saveSelection, #loadMatrix, #saveMatrix, #resetMatrix {
     display: none;
 }
-.init {
+#buttons {
+    width: 200px;
+}
+#buttons.init {
     position: absolute;
     top:50%;
     left:50%;
     transform: translate( -50%, -50% );
+    text-align: center;
+    width: auto;
 }
+
