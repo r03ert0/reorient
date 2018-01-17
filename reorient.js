@@ -123,11 +123,15 @@ function printInfo() {
     var v2m = mv.mri.MatrixVox2Mm;
     var m2v = mv.mri.MatrixMm2Vox;
     var str1=matrix2str(m2v);
+    var str3=matrix2str(v2m);
     var str2=`(${cropBox.min.x},${cropBox.min.y},${cropBox.min.z})\n(${cropBox.max.x},${cropBox.max.y},${cropBox.max.z})`;
     var info=[
         '<pre style="color:white">',
         'World to voxel matrix',
         str1,
+        '',
+        'Voxel to world matrix',
+        str3,
         '',
         'Crop box',
         str2,
