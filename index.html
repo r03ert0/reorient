@@ -11,11 +11,39 @@
     float:right;
     /* margin-top: 10px; */
     margin-right: 10px;
-    display: inline-block;
-    font: 16px/24px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    display: inline-block;    
 }
-#menu img{
+#menu img {
      margin-left: 15px;
+}
+/*#info {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    color:white;
+    padding-top:10px;
+}
+#tools {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+}
+#loadMatrix, #saveMatrix, #loadSelection, #saveSelection, #resetMatrix, #saveNifti {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+}
+*/
+.mui {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+}
+pre {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 100;
+    color:white;
 }
 img.button {
     width:0.9rem;
@@ -50,6 +78,9 @@ img.icon {
     width:500px;
     padding: 100px 20px;
     text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 100;
 }
 .box.is-dragover {
     background-color: #333;
@@ -104,13 +135,13 @@ img.icon {
 <div style='display: flex'>
     <div id='panel-left' style='flex:0 0 220px'>
         <div id='tools' class='mui-chose' style='width:200px'>
-            <div class='mui mui-pressed' title='Translate'>
+            <div class='mui mui-pressed' title='Translate' style='padding:1.2% 0'>
                 Translate
             </div>
-            <div class='mui' title='Rotate'>
+            <div class='mui' title='Rotate' style='padding:1.2% 0'>
                 Rotate
             </div>
-            <div class='mui' title='Select'>
+            <div class='mui' title='Select' style='padding:1.2% 0'>
                 Select
             </div>
         </div>
@@ -123,22 +154,27 @@ img.icon {
                         <path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"></path>
                     </svg>
                     <br />
-                    <strong id='loadNifti' class='mui mui-push mui-no-border'>Choose</strong> a <pre style="display:inline-block">.nii.gz</pre> file or drag it here.
+                    <strong id='loadNifti' class='mui mui-push mui-no-border' style='font-weight:500;font-size:16px'>Choose</strong> a <pre style="display:inline-block">.nii.gz</pre> file or drag it here.
                 </div>
                 <div class="box_uploading">Uploading&hellip;</div>
                 <div class="box_error">Error! <span></span>.</div>
             </div>
 
             <!--<div id='loadNifti' class='mui mui-push mui-no-border'>Load Nifti</div>-->
-            <div id='loadMatrix' class='mui mui-push'>Load Rotation Matrix</div>
-            <div id='saveMatrix' class='mui mui-push'>Save Rotation Matrix</div>
-            <div id='loadSelection' class='mui mui-push'>Load Selection Box</div>
-            <div id='saveSelection' class='mui mui-push'>Save Selection Box</div>
-            <div id='resetMatrix' class='mui mui-push'>Reset Matrix</div>
-            <div id='saveNifti' class='mui mui-push'>Save Nifti</div>
+            <div id='loadMatrix' class='mui mui-push' style='padding:1.2% 0'>Load Rotation Matrix</div>
+            <div id='saveMatrix' class='mui mui-push' style='padding:1.2% 0'>Save Rotation Matrix</div>
+            <div id='loadSelection' class='mui mui-push' style='padding:1.2% 0'>Load Selection Box</div>
+            <div id='saveSelection' class='mui mui-push' style='padding:1.2% 0'>Save Selection Box</div>
+            <div id='resetMatrix' class='mui mui-push' style='padding:1.2% 0'>Reset Matrix</div>
+            <div id='saveNifti' class='mui mui-push' style='padding:1.2% 0'>Save Nifti</div>
         </div>
-        <div id="info">
-        </div>
+        <span class='mui'>World to voxel matrix</span>
+        <div id='info1'></div>
+        <span class='mui'>Voxel to world matrix</span>
+        <div id='info2'></div>
+        <span class='mui'>Crop box</span>
+        <div id='info3'></div>
+
     </div>
 
     <div id='panel-right' style='flex:1'>
@@ -156,6 +192,8 @@ img.icon {
 <script src='http://localhost/muijs/mui.js'></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/muijs/mui.css" />
 <link rel="stylesheet" type="text/css" href="reorient.css" />
+<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:100,500' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:200" rel="stylesheet">
 <script src='reorient.js'></script>
 
 <script>
