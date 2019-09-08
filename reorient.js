@@ -218,9 +218,10 @@ function trans(delta) {
         prevMatrix = JSON.parse(JSON.stringify(mv.mri.MatrixMm2Vox));
     }
     let m = eye();
-    m[0][3] = delta[0];
-    m[1][3] = delta[1];
-    m[2][3] = delta[2];
+    const pix = mv.mri.pixdim[0];
+    m[0][3] = delta[0]*pix;
+    m[1][3] = delta[1]*pix;
+    m[2][3] = delta[2]*pix;
     multiplyAndUpdate(m)
     mv.draw();
     printInfo();
