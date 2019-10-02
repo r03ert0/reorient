@@ -533,9 +533,9 @@ function saveNifti() {
     let rect = mv.views[0].canvas.getBoundingClientRect();
     let pixdim = mv.dimensions.absolute.pixdim;
     let dim = [
-        Math.ceil((cropBox.max.x - cropBox.min.x)/pixdim[0]),
-        Math.ceil((cropBox.max.y - cropBox.min.y)/pixdim[1]),
-        Math.ceil((cropBox.max.z - cropBox.min.z)/pixdim[2])
+        Math.ceil((cropBox.max.x - cropBox.min.x)*pixdim[0]),
+        Math.ceil((cropBox.max.y - cropBox.min.y)*pixdim[1]),
+        Math.ceil((cropBox.max.z - cropBox.min.z)*pixdim[2])
     ];
 
     console.log("Crop volume dimensions:", dim);
