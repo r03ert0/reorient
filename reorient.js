@@ -533,9 +533,9 @@ function saveNifti() {
     let rect = mv.views[0].canvas.getBoundingClientRect();
     let pixdim = mv.dimensions.absolute.pixdim;
     let dim = [
-        Math.ceil((cropBox.max.x - cropBox.min.x)/pixdim[0]),
-        Math.ceil((cropBox.max.y - cropBox.min.y)/pixdim[1]),
-        Math.ceil((cropBox.max.z - cropBox.min.z)/pixdim[2])
+        Math.ceil((cropBox.max.x - cropBox.min.x)*pixdim[0]),
+        Math.ceil((cropBox.max.y - cropBox.min.y)*pixdim[1]),
+        Math.ceil((cropBox.max.z - cropBox.min.z)*pixdim[2])
     ];
 
     console.log("Crop volume dimensions:", dim);
@@ -550,9 +550,9 @@ function saveNifti() {
         for(j=0;j<dim[1];j++) {
             for(k=0;k<dim[2];k++) {
                 w = [
-                    cropBox.min.x + i*pixdim[0],
-                    cropBox.min.y + j*pixdim[1],
-                    cropBox.min.z + k*pixdim[2]
+                    cropBox.min.x + i/pixdim[0],
+                    cropBox.min.y + j/pixdim[1],
+                    cropBox.min.z + k/pixdim[2]
                 ];
                 val = mv.A2Value(w);
                 data[k*dim[1]*dim[0] + j*dim[0] + i] = val;
